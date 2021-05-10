@@ -469,7 +469,8 @@
 								</header>
 								<section class="content">
 									<div class="content-main">
-										<div class="progress blue">
+										<div class="progress blue"  data-toggle="modal"
+										data-target="#exampleModalstartexeme" style="cursor: pointer;">
 											<span class="progress-left">
 												<span class="progress-bar"></span>
 											</span>
@@ -479,17 +480,19 @@
 											<div
 												style="width: 150px; height: 150px; border: blanchedalmond 3px solid; background-color: rgb(42, 40, 40); border-radius: 100%;">
 												<div>
-													<h6 style="margin-top: 40px; margin-left: 12px; color: white;">
+													<p style="margin-top: 10px; margin-left: 12px; color: white;">
+														<em>START</em></p>
+													<h6 style="margin-top: 13px; margin-left: 12px; color: white;">
 														Performance</h6>
-													<h1 style="margin-top: 10px; margin-left: 15px; color: white;">78%
+													<h1 style=" margin-left: 10px; color: white;">78%
 													</h1>
 
 													</h6>
 												</div>
 											</div>
 										</div>
-										<h2>Monitor your med schedule</h2>
-										<p>View your daily schedule and mark your meds when taken</p>
+										<h2 style="color: #f82249; margin-top: 5px;">Votre etat est normale</h2>
+										<p>Veillez scroller vers le bas pour plus d'info</p>
 										<footer class="footer">
 											<div>
 												<h5>37°C</h5>
@@ -531,9 +534,8 @@
 											</div>
 
 										</footer>
-										<button class="btn-pink" data-toggle="modal"
-											data-target="#exampleModalstartexeme" data-whatever="@mdo">commencer votre
-											examen</button>
+										<a href="../../Serenity/ExamentDedail.html"><button class="btn-pink" data-whatever="@mdo">Examen Detail
+											</button></a>
 
 										<a href="../../Serenity/ExamentDedail.html"><button class="btn-pink"
 												data-whatever="@mdo" id="Detailbut" style="display: none;">
@@ -602,13 +604,12 @@
 												myVar = setTimeout(showPage, 500);
 
 											}
-
 											function showPage() {
 												document.getElementById("loader1").style.display = "block";
 												document.getElementById("entrerTaille").style.display = "none";
 												setTimeout(() => {
-													window.location.href = '../../Serenity/ExamentDedail.html';
-												}, 6000);
+													$("#exampleModalstartexeme").modal('hide')
+ 												}, 6000);
 											}
 										</script>
 
