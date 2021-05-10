@@ -2274,6 +2274,9 @@
 									<span>4:45 pm<i class="fa fa-check ml-2"></i></span>
 								</div>
 							</div>
+							<div class="chat-message chat-message-right">
+								<span id="monTextEnvoieRDV"></span>
+							</div>
 						</div>
 						<div class="tab-pane fade" id="chat-second" role="tabpanel" aria-labelledby="chat-second-tab">
 							<div class="empty-screen">
@@ -2796,9 +2799,10 @@
 														alt="Generic placeholder image" style="padding-top: 12px;"></a>
 												<div class="dropdown-menu dropdown-menu-right"
 													aria-labelledby="chatDropdown">
-													<a class="dropdown-item font-14" href="#" onclick="openForm()">
-														Ordonnance</a>
 													<a class="dropdown-item font-14" href="#">Upload a file</a>
+													<a class="dropdown-item font-14"><p>Rendez-vous</p><input type="datetime-local" id="datetimelocal" class="without_ampm">
+														<p style="margin-top: 7px; color: red; margin-left: 145px; cursor: pointer;" onclick="envoyezRDV()">Envoyer</p>
+														</a>
 												</div>
 											</div>
 										</li>
@@ -2919,6 +2923,14 @@
 <!-- Start js -->
 </div>
 <script>
+		//function monTextEnvoieRDV
+		function envoyezRDV(){
+						var datetime=document.getElementById('datetimelocal').value;
+						msag = `<div class="chat-message-text">
+							<p>${datetime} <img src="assets/images/alarme.svg" alt=""></p>
+							</div>`
+						document.getElementById('monTextEnvoieRDV').innerHTML = msag
+					}
 	function openNav() {
 		document.getElementById("mySidenav").style.width = "320px";
 		setTimeout(() => {

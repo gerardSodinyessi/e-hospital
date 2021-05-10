@@ -1645,6 +1645,9 @@
 							<div class="chat-message chat-message-right">
 								<span id="monTextEnvoieJav"></span>
 							</div>
+							<div class="chat-message chat-message-right">
+								<span id="monTextEnvoieRDV"></span>
+							</div>
 						</div>
 						<div class="tab-pane fade" id="chat-second" role="tabpanel" aria-labelledby="chat-second-tab">
 							<div class="empty-screen">
@@ -2173,6 +2176,12 @@
 														onclick="sendOrdonnanceModalr()"> Ordonnance</a>
 													<a class="dropdown-item font-14" data-toggle="modal"
 														data-target="#exampleModal" href="#">Send Examen</a>
+													<a class="dropdown-item font-14">
+														<p>Rendez-vous</p><input type="datetime-local"
+															id="datetimelocal" class="without_ampm">
+														<p style="margin-top: 7px; color: red; margin-left: 145px; cursor: pointer;"
+															onclick="envoyezRDV()">Envoyer</p>
+													</a>
 												</div>
 											</div>
 										</li>
@@ -2184,18 +2193,8 @@
 						</form>
 					</div>
 				</div>
+
 				<!-- End Chat Detail -->
-				<script>
-					function monTextEnvoieJav() {
-						event.preventDefault();
-						var tapemessage = document.getElementById('Typemessage').value;
-						msag = `<div class="chat-message-text">
-							<p>${tapemessage}</p>
-							</div>`
-						document.getElementById('monTextEnvoieJav').innerHTML = msag
-						document.getElementById('Typemessage').value = ""
-					}
-				</script>
 			</div>
 			<!-- Start Chat User Info -->
 			<div id="changerCssuserInfo">
@@ -3075,6 +3074,25 @@
 		<!---------- confirmenvoyermessageOrder--------------->
 		<!--------------all modal------------>
 		<script>
+			//function monTextEnvoieJav
+			function monTextEnvoieJav() {
+				event.preventDefault();
+				var tapemessage = document.getElementById('Typemessage').value;
+				msag = `<div class="chat-message-text">
+							<p>${tapemessage}</p>
+							</div>`
+				document.getElementById('monTextEnvoieJav').innerHTML = msag
+				document.getElementById('Typemessage').value = ""
+			}
+			//function monTextEnvoieRDV
+			function envoyezRDV() {
+				var datetime = document.getElementById('datetimelocal').value;
+				msag = `<div class="chat-message-text">
+							<p>${datetime} <img src="assets/images/alarme.svg" alt=""></p>
+							</div>`
+				document.getElementById('monTextEnvoieRDV').innerHTML = msag
+			}
+
 			function soummettreOder() {
 				setTimeout(() => {
 					document.getElementById('medicamentUn').style.display = "none"
