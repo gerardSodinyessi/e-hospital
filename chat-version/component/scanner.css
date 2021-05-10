@@ -3,14 +3,14 @@
 	#loader {
 		position: absolute;
 		left: 50%;
-		top: 50%;
+		top: 95px;
 		z-index: 1;
-		width: 120px;
-		height: 120px;
+		width: 150px;
+		height: 150px;
 		margin: -76px 0 0 -76px;
-		border: 16px solid #f3f3f3;
+		border: 16px solid black;
 		border-radius: 50%;
-		border-top: 16px solid #042a44;
+		border-top: 6px solid #fdba04;
 		-webkit-animation: spin 2s linear infinite;
 		animation: spin 2s linear infinite;
 	}
