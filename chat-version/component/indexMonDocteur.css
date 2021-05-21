@@ -166,21 +166,9 @@
 						margin-right: auto;
 					}
 
-					#logocalling {
-						margin-left: 34px;
-					}
-
-					#aligervousimg {
-						margin-left: 15px !important;
-					}
-
 					@media screen and (max-width: 375px) {
 						#logocalling {
-							margin-left: 32px !important;
-						}
-
-						#aligervousimg {
-							margin-left: 25px !important;
+							margin-left: 22px !important;
 						}
 					}
 
