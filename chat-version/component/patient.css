@@ -226,6 +226,10 @@ body {
 	#logocalling {
 		margin-left: 22px !important;
 	}
+
+	#aligervousimg {
+		margin-left: 39px !important;
+	}
 }
 
 @media screen and (max-width: 375px) {
@@ -233,7 +237,6 @@ body {
 		margin-left: 22px !important;
 	}
 }
-
 @media screen and (max-width: 420px) {
 	.form-control.webcam-start {
 		width: 300px;
