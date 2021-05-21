@@ -221,22 +221,12 @@ body {
 }
 
 #logocalling {
-	margin-left: 34px;
+	margin-left: 10px;
 }
 
-#aligervousimg {
-	margin-left: 15px !important;
-}
+ 
 
-@media screen and (max-width: 375px) {
-	#logocalling {
-		margin-left: 32px !important;
-	}
 
-	#aligervousimg {
-		margin-left: 25px !important;
-	}
-}
 
 @media screen and (max-width: 420px) {
 	.form-control.webcam-start {
