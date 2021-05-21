@@ -228,6 +228,12 @@ body {
 	}
 }
 
+@media screen and (max-width: 375px) {
+	#vidoaOp {
+		margin-left: 22px !important;
+	}
+}
+
 @media screen and (max-width: 420px) {
 	.form-control.webcam-start {
 		width: 300px;
