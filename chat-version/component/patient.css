@@ -220,13 +220,13 @@ body {
 	}
 }
 
-#logocalling {
-	margin-left: 16px;
+
+
+@media screen and (max-width: 375px) {
+	#logocalling {
+		margin-left: 22px !important;
+	}
 }
-
- 
-
-
 
 @media screen and (max-width: 420px) {
 	.form-control.webcam-start {
