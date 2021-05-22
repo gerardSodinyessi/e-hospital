@@ -241,3 +241,27 @@
 							left: 8vw;
 						}
 					}
+
+					#sig-canvas {
+						border: 2px dotted #CCCCCC;
+						border-radius: 15px;
+						cursor: crosshair;
+					}
+
+					@media screen and (max-width: 375px) {
+						#buttoncanvas {
+							margin-left: 40px !important;
+						}
+						#canvassignup {
+							margin-left: 25px !important;
+						}
+					}
+
+					@media screen and (max-width: 320px) {
+						#buttoncanvas {
+							margin-left: 55px !important;
+						}
+						#canvassignup {
+							margin-left: 0px !important;
+						}
+					}
