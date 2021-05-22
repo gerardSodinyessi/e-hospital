@@ -1322,11 +1322,241 @@
 												</div>
 											</div>
 										</li>
+										<li class="media">
+											<img src="assets/images/ftsignature.svg" alt="" 
+											style="color: #f82249; width: 33px; height: 33px; 
+											cursor: pointer; margin-right: 7px;" onclick="exampleModalCenteresignup()">
+											<div class="media-body">
+												<h3>e-signature</h3>
+												<div class="input-group">
+													<div class="row">
+														<div class="col-md-12">
+															<img id="sig-image" src=""
+																alt="Your signature will go here!" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="media">
+											<div class="media-body">
+												<h3>URL</h3>
+												<div class="input-group">
+													<div class="row">
+														<div class="col-md-12">
+															<textarea id="sig-dataUrl"
+																class="form-control"
+																rows="5">L'URL des données!</textarea>
+														</div> 
+													</div>
+												</div>
+											</div>
+										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModalCenteresignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteresignupTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="form-group">
+									<!-- Content -->
+									<div class="container">
+										<div class="row">
+											<h2 style="text-align: center;">Authentifier votre inscription ici!</h2>
+											<div class="col-md-12" style="margin-left: 60px;" id="canvassignup">
+												
+												<canvas id="sig-canvas" width="250vh"
+													height="175">
+													Trouve un meilleur navigateur, mon frère.
+												</canvas>
+												<h1></h1>
+												<h1></h1>
+												<div style="margin-left: 55px;" id="buttoncanvas">
+												<button class="btn btn-primary"
+													id="sig-submitBtn">Soumettre </button>
+												<button class="btn btn-default"
+													id="sig-clearBtn">Effacer </button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<style>
+										#sig-canvas {
+											border: 2px dotted #CCCCCC;
+											border-radius: 15px;
+											cursor: crosshair;
+										}
+
+										@media screen and (max-width: 375px) {
+											#buttoncanvas {
+												margin-left: 40px !important;
+											}
+											#canvassignup {
+												margin-left: 25px !important;
+											}
+										}
+
+										@media screen and (max-width: 320px) {
+											#buttoncanvas {
+												margin-left: 55px !important;
+											}
+											#canvassignup {
+												margin-left: 0px !important;
+											}
+										}
+									</style>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>	
+					<script>
+						function exampleModalCenteresignup(){
+							$('#exampleModalCenteresignup').modal({
+								show:true
+							})
+						}
+								(function () {
+			window.requestAnimFrame = (function (callback) {
+				return window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					window.oRequestAnimationFrame ||
+					window.msRequestAnimaitonFrame ||
+					function (callback) {
+						window.setTimeout(callback, 1000 / 60);
+					};
+			})();
+
+			var canvas = document.getElementById("sig-canvas");
+			var ctx = canvas.getContext("2d");
+			ctx.strokeStyle = "#222222";
+			ctx.lineWidth = 1;
+
+			var drawing = false;
+			var mousePos = {
+				x: 0,
+				y: 0
+			};
+			var lastPos = mousePos;
+
+			canvas.addEventListener("mousedown", function (e) {
+				drawing = true;
+				lastPos = getMousePos(canvas, e);
+			}, false);
+
+			canvas.addEventListener("mouseup", function (e) {
+				drawing = false;
+			}, false);
+
+			canvas.addEventListener("mousemove", function (e) {
+				mousePos = getMousePos(canvas, e);
+			}, false);
+
+			// Add touch event support for mobile
+			canvas.addEventListener("touchstart", function (e) {
+
+			}, false);
+
+			canvas.addEventListener("touchmove", function (e) {
+				var touch = e.touches[0];
+				var me = new MouseEvent("mousemove", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(me);
+			}, false);
+
+			canvas.addEventListener("touchstart", function (e) {
+				mousePos = getTouchPos(canvas, e);
+				var touch = e.touches[0];
+				var me = new MouseEvent("mousedown", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(me);
+			}, false);
+
+			canvas.addEventListener("touchend", function (e) {
+				var me = new MouseEvent("mouseup", {});
+				canvas.dispatchEvent(me);
+			}, false);
+
+			function getMousePos(canvasDom, mouseEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: mouseEvent.clientX - rect.left,
+					y: mouseEvent.clientY - rect.top
+				}
+			}
+
+			function getTouchPos(canvasDom, touchEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: touchEvent.touches[0].clientX - rect.left,
+					y: touchEvent.touches[0].clientY - rect.top
+				}
+			}
+
+			function renderCanvas() {
+				if (drawing) {
+					ctx.moveTo(lastPos.x, lastPos.y);
+					ctx.lineTo(mousePos.x, mousePos.y);
+					ctx.stroke();
+					lastPos = mousePos;
+				}
+			}
+
+			// Prevent scrolling when touching the canvas
+			document.body.addEventListener("touchstart", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+			document.body.addEventListener("touchend", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+			document.body.addEventListener("touchmove", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+
+			(function drawLoop() {
+				requestAnimFrame(drawLoop);
+				renderCanvas();
+			})();
+
+			function clearCanvas() {
+				canvas.width = canvas.width;
+			}
+
+			// Set up the UI
+			var sigText = document.getElementById("sig-dataUrl");
+			var sigImage = document.getElementById("sig-image");
+			var clearBtn = document.getElementById("sig-clearBtn");
+			var submitBtn = document.getElementById("sig-submitBtn");
+			clearBtn.addEventListener("click", function (e) {
+				clearCanvas();
+				sigText.innerHTML = "Data URL for your signature will go here!";
+				sigImage.setAttribute("src", "");
+			}, false);
+			submitBtn.addEventListener("click", function (e) {
+				var dataUrl = canvas.toDataURL();
+				sigText.innerHTML = dataUrl;
+				sigImage.setAttribute("src", dataUrl);
+				$('#exampleModalCenteresignup').modal('hide')
+			}, false);
+
+		})();
+					</script>				
+					<!-----e-signature---->
 					<!-- End Chat Profilebar -->
 					<!-- Start Chat Settingbar -->
 					<div class="tab-pane fade" id="pills-setting-justified" role="tabpanel"
