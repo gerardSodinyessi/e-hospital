@@ -51,52 +51,16 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<div class="row">
-						<div class="">
-							<div class="col-3 text-right mr-4">
-								<p style="color: red;"><em>UBA</em></p>
-								<div class="custom-control custom-switch">
-									<input type="checkbox" class="custom-control-input" id="acceptAchatUBA" value="On"
-										onclick="ahoooUBA()">
-									<label class="custom-control-label" for="acceptAchatUBA"></label>
-								</div>
-							</div>
+					<li class="media">
+						<img class="align-self-center mr-2" src="assets/images/men1.png" alt="Generic placeholder image"
+							style="width: 44px; height: 44px; border-radius: 100%;">
+						<div class="media-body">
+							<h5 class="mb-0 mt-2">Pharmacie La Reférence</h5>
 						</div>
-						<div class="">
-							<div class="col-3 text-right  mr-4">
-								<p style="color: red;"><em>MTN</em></p>
-								<div class="custom-control custom-switch">
-									<input type="checkbox" class="custom-control-input" id="acceptAchatMTN"
-										onclick="ahoooMTN()">
-									<label class="custom-control-label" for="acceptAchatMTN"></label>
-								</div>
-							</div>
-						</div>
-						<div class="">
-							<div class="col-3 text-right  mr-4">
-								<p style="color: red;"><em>MOOV</em></p>
-								<div class="custom-control custom-switch">
-									<input type="checkbox" class="custom-control-input" id="acceptAchatMOOW"
-										onclick="ahoooMOOW()">
-									<label class="custom-control-label" for="acceptAchatMOOW"></label>
-								</div>
-							</div>
-						</div>
-						<div class="">
-							<div class="col-3 text-right  mr-4">
-								<div class="custom-control custom-switch">
-									<a class="nav-link" id="chat-second-tab" data-toggle="pill" href="#chat-second"
-										role="tab" aria-controls="chat-second" aria-selected="false">
-										<p style="color: red;"><em> </em></p>
-										<img src="assets/images/pcommant.svg" alt="" title="Noter cette Pharmacie">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
+					</li>
 				</div>
 				<span id="receveValidate"></span>
-				<div class="modal-body">
+				<div class="modal-body" id="payermedicamentbody">
 					<!--	Start Chat Detail  -->
 					<div class="chat-detail" id="chat-detaila">
 						<div class="chat-body" style="height: 65vh;">
@@ -1116,6 +1080,16 @@
 													<a class="dropdown-item font-14" href="#"
 														onclick="openForm()">Envoyer l'rdonnance</a>
 													<a class="dropdown-item font-14" href="#">Upload a file</a>
+													<a class="dropdown-item font-14" href="#"
+														onclick="payervotremedic()">
+														<div style="display: inline-flex;">
+															<div style="margin-right: 15px;">
+																<i class="fa fa-credit-card"
+																	style="font-size:24px;color:red"></i>
+															</div>
+															<div>Payer</div>
+														</div>
+													</a>
 												</div>
 											</div>
 										</li>
@@ -1127,9 +1101,79 @@
 						</form>
 					</div>
 				</div>
+				<div id="payermedicament" style="display: none;">
+					<div class="">
+						<div class="" style="margin-bottom: 34px;">
+							<div class="" style="display: inline-flex;">
+								<div>
+									<p style=" margin-right: 5px;">uba</p>
+								</div>
+								<div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input" id="acceptAchatUBA" value="On"
+										onclick="ahoooUBA()">
+									<label class="custom-control-label" for="acceptAchatUBA"></label>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div class="" style="display: inline-flex; margin-bottom: 34px;">
+							<div class="">
+								<p style="margin-right: 5px;">mtn</p>
+							</div>
+							<div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" id="acceptAchatMTN"
+									onclick="ahoooMTN()">
+								<label class="custom-control-label" for="acceptAchatMTN"></label>
+							</div>
+						</div>
+						<hr>
+						<div class="" style="display: inline-flex; margin-bottom: 34px;">
+							<div class="">
+								<p style="margin-right: 5px;">moow</p>
+							</div>
+							<div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" id="acceptAchatMOOW"
+									onclick="ahoooMOOW()">
+								<label class="custom-control-label" for="acceptAchatMOOW"></label>
+							</div>
+						</div>
+						<hr>
+						<div class="" style="margin-bottom: 27px;">
+							<div class="">
+								<div>
+									<p>commenter</p>
+								</div>
+								<div class="custom-control custom-switch">
+									<a class="" id="chat-second-tab" data-toggle="pill" href="#chat-second" role="tab"
+										aria-controls="chat-second" aria-selected="false">
+										<p style="color: red;"></p>
+										<img src="assets/images/pcommant.svg" alt="" title="Noter cette Pharmacie">
+									</a>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<p style="cursor: pointer;" onclick="Quitterpharmacie()" id="Quitterpharmacie">Quitter</p>
+						<h1></h1>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<style>
+		#payermedicament {
+			position: absolute;
+			top: 90px;
+			right: 0;
+			height: 76vh;
+			width: 14vh;
+			background-color: aqua;
+		}
+
+		.chatpharma {
+			margin-right: 75px;
+		}
+	</style>
 	<script>
 		//UBA function
 		function ahoooUBA() {
@@ -1208,6 +1252,16 @@
 
 		function refuseFactureMOOW() {
 			document.getElementById('myModal').style.display = 'block'
+		}
+		//function payer votre medicament
+		function payervotremedic() {
+			$('#payermedicamentbody').addClass('chatpharma');
+			document.getElementById('payermedicament').style.display = "block"
+		}
+		// function quitter pharmacie
+		function Quitterpharmacie() {
+			$('#payermedicamentbody').removeClass('chatpharma');
+			document.getElementById('payermedicament').style.display = "none"
 		}
 	</script>
 	<!-------start modaleAceptFacturactionUBA---------->
