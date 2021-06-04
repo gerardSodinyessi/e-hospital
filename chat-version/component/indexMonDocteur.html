@@ -2310,8 +2310,7 @@
 														<a class="dropdown-item font-14" href="#">Upload a file</a>
 														<a class="dropdown-item font-14" href="#"
 															onclick="sendOrdonnanceModalr()"> Ordonnance</a>
-														<a class="dropdown-item font-14" data-toggle="modal"
-															data-target="#exampleModal" href="#">Send Examen</a>
+														<a class="dropdown-item font-14"  href="#" onclick="exampleModalenvoiTest()">Envoyer Examen</a>
 														<a class="dropdown-item font-14">
 															<p>Rendez-vous</p><input type="datetime-local"
 																id="datetimelocal" class="without_ampm">
@@ -2882,6 +2881,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
+							<button type="button" class="btn btn-info" onclick="validerMontestFermer()">Fermer</button>
 							<button type="button" class="btn btn-danger" onclick="validerMontest()">Valider</button>
 						</div>
 					</div>

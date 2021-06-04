@@ -523,3 +523,16 @@
 					   function validationtesthuitb() {
 						   document.getElementById('orderhuit').style.backgroundColor = "rgb(92, 94, 104)"
 					   }
+					   // fermer examen modale
+					   function validerMontestFermer(){
+						$('#exampleModal').modal('hide')
+					}
+
+					//function open examen modale
+					function exampleModalenvoiTest(){
+						$('#exampleModal').modal({
+							show: true,
+						   backdrop: 'static',
+						   keyboard: false
+						})
+					}
